@@ -13,6 +13,7 @@
     <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
     <meta property="og:image" content="https://ripeemangoes.files.wordpress.com/2017/12/original.jpg" />
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
     <!-- Matomo -->
     <script>
         var _paq = window._paq = window._paq || [];

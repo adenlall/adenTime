@@ -19,7 +19,7 @@
             Time is a power
           </h1>
       <p class="mb-5">
-            Register now and be organized with your own dashboard. <span class="font-bold">Its Free</span>
+            Register now and organized your time with your own dashboard. <span class="font-bold">Its Free</span>
           </p>
       <a href="{{ route('signup') }}"><button class="btn btn-primary">Get Started</button></a>
     </div>
