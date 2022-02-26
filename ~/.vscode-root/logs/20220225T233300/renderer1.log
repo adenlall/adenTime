@@ -1,0 +1,7 @@
+[2022-02-25 23:33:14.802] [renderer1] [info] IExtensionHostStarter.start() took 412 ms.
+[2022-02-25 23:33:20.244] [renderer1] [error] [Extension Host] (node:17882) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+(Use `code --trace-deprecation ...` to show where the warning was created)
+[2022-02-25 23:33:54.636] [renderer1] [info] IExtensionHostStarter.start() took 565 ms.
+[2022-02-25 23:34:00.200] [renderer1] [error] [Extension Host] (node:17997) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+(Use `code --trace-deprecation ...` to show where the warning was created)
+[2022-02-25 23:34:30.376] [renderer1] [warning] UNRESPONSIVE extension host, 'vscode.git' took 69% of 1610.565ms, saved PROFILE here: 'file:///tmp/exthost-01c611.cpuprofile' [{"id":"gc","total":6887,"percentage":0},{"id":"program","total":340634,"percentage":21},{"id":"self","total":154510,"percentage":10},{"id":"vscode.git","total":1105421,"percentage":69}]

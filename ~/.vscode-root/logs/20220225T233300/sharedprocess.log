@@ -1,0 +1,4 @@
+[2022-02-25 23:33:23.951] [sharedprocess] [warning] No ptyHost heartbeat after 6 seconds
+[2022-02-25 23:33:24.328] [sharedprocess] [info] Starting worker process with pid 17918 (type: fileWatcher, window: 1).
+[2022-02-25 23:33:47.088] [sharedprocess] [info] Worker process with pid 17918 terminated normally (type: fileWatcher, window: 1).
+[2022-02-25 23:33:53.943] [sharedprocess] [info] Starting worker process with pid 17998 (type: fileWatcher, window: 1).

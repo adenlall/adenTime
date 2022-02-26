@@ -21,10 +21,26 @@ class DashboardController extends Controller
     public function index(Request $request)
     {
 
+
+        // $footballdataKEY = '32c10ff811b644ce85cab7ba0189b94a';      //  00e6d72f72024a5a90b3c1fdfa3b0ba8 2th API token
+        // $opo = 'http://api.football-data.org/v3/competitions/PL/';
+        // $req = Http::withHeaders([
+        //     'X-Auth-Token' => "{$footballdataKEY}"
+        // ])->get($opo)->json();
+        // $ol = 'http://api.football-data.org/v3/competitions/2021/matches?matchday=27&status=SCHEDULED';
+        // $op = Http::withHeaders([
+        //     'X-Auth-Token' => "{$footballdataKEY}"
+        // ])->get($ol)->json();
+        // dd($req, $op);
+
+
         // config
-        // $ip = "1.1.72.208";
-        $ip = $request->ip();
+        // $ip = $request->ip();
+
+
+        $ip = "1.1.72.208";
         $position = Location::get($ip);
+        $timeOut = now()->addMicroseconds(10);
         $openweatherKEY = '640dd62032cdb0fa31d41c05f34c215a';
         $unsplashKEY = 'sz0VEajnSgEOt23cZAJ72OK5ULROCZ8PweUFN3S6AEg';
         $footballdataKEY = '32c10ff811b644ce85cab7ba0189b94a';      //  00e6d72f72024a5a90b3c1fdfa3b0ba8 2th API token
@@ -52,9 +68,9 @@ class DashboardController extends Controller
         ];
 
         // select the compitition
-        for ($i=0; $i < count($comArr); $i++) {
+        for ($i = 0; $i < count($comArr); $i++) {
             $var_f_db = $var_f;
-            if($var_f_db === array_keys($comArr)[$i]){
+            if ($var_f_db === array_keys($comArr)[$i]) {
                 $var_f_db = array_keys($comArr)[$i];
                 break;
             };
@@ -64,7 +80,7 @@ class DashboardController extends Controller
         // select type of recommendation
         if ($rec_type = @$aniArr[$rec_type]) {
             $rec_type = $aniArr[$rec_type];
-        }else{
+        } else {
             $rec_type = 'anime';
         }
 
@@ -72,51 +88,66 @@ class DashboardController extends Controller
 
 
         // API fetch
+
+
+
         $urlop = "https://api.openweathermap.org/data/2.5/weather?lat={$lat}&lon={$lon}&appid={$openweatherKEY}";
         $resop = Http::get($urlop)->json();
         $urlun = "https://api.unsplash.com/search/collections?page=1&query={$resop['weather'][0]['description']}&per_page=2&client_id={$unsplashKEY}";
         $resun = Http::get($urlun)->json();
         $urlho = "https://api.api-ninjas.com/v1/holidays?country={$country}&year=2022";
-        $resho = Http::withHeaders([
-            'X-Api-Key' => 'TLUwtlMYKxG/JH1HK0LY8Q==gqLNjf8vrAvxZwxh'
-        ])->get($urlho)->json();
 
+        $resho = cache()->remember('resho', $timeOut, function () use ($urlho) {
+            return Http::withHeaders([
+                'X-Api-Key' => 'TLUwtlMYKxG/JH1HK0LY8Q==gqLNjf8vrAvxZwxh'
+            ])->get($urlho)->json();
+        });
         // Convert weather to moods
         $mood_weather = $resop['weather'][0]['main'];
         $cateArr = [
-           'Clear'       =>       ['adventure',    'Action',        'Sports'],
-           'Clouds'      =>       ['Historical',   'Psychological', 'Horror'],
-           'Drizzle'     =>       ['Slice-of-Life','School-Life',   'Historical'],
-           'Rain'        =>       ['Romance',      'Drama',         'adventure'],
-           'Thunderstorm'=>       ['Horror',       'Historical',    'Psychological'],
-           'Mist'        =>       ['Historical',   'Sports',        'Slice-of-Life'],
-           'Snow'        =>       ['Supernatural', 'Drama',         'Demon'],
+            'Clear'       =>       ['adventure',    'Action',        'Sports'],
+            'Clouds'      =>       ['Historical',   'Psychological', 'Horror'],
+            'Drizzle'     =>       ['Slice-of-Life', 'School-Life',   'Historical'],
+            'Rain'        =>       ['Romance',      'Drama',         'adventure'],
+            'Thunderstorm' =>       ['Horror',       'Historical',    'Psychological'],
+            'Mist'        =>       ['Historical',   'Sports',        'Slice-of-Life'],
+            'Snow'        =>       ['Supernatural', 'Drama',         'Demon'],
         ];
         // generate Percentage
-        $num = rand(1,100);
+        $num = rand(1, 100);
         $out = 0; // initial value
-        if($num >= 50) $out = 0; // $out = 0; in 50%
-        if($num <= 33) $out = 1; // $out = 0; in 33%
-        if($num <= 17) $out = 1; // $out = 0; in 17%
+        if ($num >= 50) $out = 0; // $out = 0; in 50%
+        if ($num <= 33) $out = 1; // $out = 0; in 33%
+        if ($num <= 17) $out = 1; // $out = 0; in 17%
 
         // dd($mood_weather, $out);
         $category = $cateArr[$mood_weather][$out];
 
         $urlan = "https://kitsu.io/api/edge/{$rec_type}?sort=popularityRank&filter[categories]={$category}";
-        $resan = Http::get($urlan)->json();
 
+        $resan = cache()->remember('resan', $timeOut, function () use ($urlan) {
+            return Http::get($urlan)->json();
+        });
+        // $competition = 2015;
         $urlfo_c = "http://api.football-data.org/v3/competitions/{$competition}";
-        $urlfo_m = "http://api.football-data.org/v3/competitions/{$competition}/matches?status=SCHEDULED";
+        $urlfo_m = "http://api.football-data.org/v3/competitions/{$competition}/matches?status=SCHEDULED&matchday=27";
         $urlfo_t = "http://api.football-data.org/v3/competitions/{$competition}/teams?season=2021";
-        $resfo_c = Http::withHeaders([
-            'X-Auth-Token' => "{$footballdataKEY}"
-        ])->get($urlfo_c)->json();
-        $resfo_m = Http::withHeaders([
-            'X-Auth-Token' => "{$footballdataKEY}"
-        ])->get($urlfo_m)->json();
-        $resfo_t = Http::withHeaders([
-            'X-Auth-Token' => "{$footballdataKEY}"
-        ])->get($urlfo_t)->json();
+
+        $resfo_c = cache()->remember('resoos', $timeOut, function () use ($footballdataKEY, $urlfo_c) {
+            return Http::withHeaders([
+                'X-Auth-Token' => "{$footballdataKEY}"
+            ])->get($urlfo_c)->json();
+        });
+        $resfo_m = cache()->remember('resoos', $timeOut, function () use ($footballdataKEY, $urlfo_m) {
+            return Http::withHeaders([
+                'X-Auth-Token' => "{$footballdataKEY}"
+            ])->get($urlfo_m)->json();
+        });
+        $resfo_t = cache()->remember('resoos', $timeOut, function () use ($footballdataKEY, $urlfo_t) {
+            return Http::withHeaders([
+                'X-Auth-Token' => "{$footballdataKEY}"
+            ])->get($urlfo_t)->json();
+        });
         // dd($resfo_c, $resfo_m, $resfo_t);
 
 
@@ -144,6 +175,9 @@ class DashboardController extends Controller
             array_column($resho, 'date')
         );
 
+
+
+        // dd($resfo_c, $resfo_m, $resfo_t, $urlfo_c, $urlfo_m, $urlfo_t);
         // return
         return view('dashboard')->with([
             'ip' => $ip,

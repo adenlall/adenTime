@@ -1,0 +1,30 @@
+[2022-02-25 23:33:21.898] [exthost] [info] Extension host with pid 17882 started
+[2022-02-25 23:33:23.190] [exthost] [info] ExtensionService#_doActivateExtension vscode.microsoft-authentication, startup: false, activationEvent: 'onAuthenticationRequest:microsoft'
+[2022-02-25 23:33:24.160] [exthost] [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch, startup: true, activationEvent: '*'
+[2022-02-25 23:33:24.302] [exthost] [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.github
+[2022-02-25 23:33:25.542] [exthost] [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+[2022-02-25 23:33:26.661] [exthost] [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+[2022-02-25 23:33:28.260] [exthost] [info] Eager extensions activated
+[2022-02-25 23:33:28.289] [exthost] [info] ExtensionService#_doActivateExtension vscode.github-authentication, startup: false, activationEvent: 'onAuthenticationRequest:github'
+[2022-02-25 23:33:28.659] [exthost] [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onStartupFinished'
+[2022-02-25 23:33:28.785] [exthost] [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+[2022-02-25 23:33:34.545] [exthost] [info] ExtensionService#_doActivateExtension vscode.configuration-editing, startup: false, activationEvent: 'onLanguage:jsonc'
+[2022-02-25 23:33:34.772] [exthost] [info] ExtensionService#_doActivateExtension vscode.json-language-features, startup: false, activationEvent: 'onLanguage:jsonc'
+[2022-02-25 23:33:36.055] [exthost] [info] ExtensionService#_doActivateExtension vscode.typescript-language-features, startup: false, activationEvent: 'onLanguage:jsonc'
+[2022-02-25 23:33:46.935] [exthost] [info] extension host terminating: renderer closed the socket
+[2022-02-25 23:33:46.970] [exthost] [info] Extension host with pid 17882 exiting with code 0
+[2022-02-25 23:34:02.004] [exthost] [info] Extension host with pid 17997 started
+[2022-02-25 23:34:02.004] [exthost] [info] Skipping acquiring lock for /opt/lampp/htdocs/Laravel/adenTime/~/.vscode-root/User/workspaceStorage/439965ea390cef2d1f601410865205e5.
+[2022-02-25 23:34:03.024] [exthost] [info] ExtensionService#_doActivateExtension vscode.microsoft-authentication, startup: false, activationEvent: 'onAuthenticationRequest:microsoft'
+[2022-02-25 23:34:03.154] [exthost] [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch, startup: true, activationEvent: '*'
+[2022-02-25 23:34:03.179] [exthost] [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.github
+[2022-02-25 23:34:03.207] [exthost] [info] ExtensionService#_doActivateExtension vscode.npm, startup: true, activationEvent: 'workspaceContains:package.json'
+[2022-02-25 23:34:04.477] [exthost] [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+[2022-02-25 23:34:04.680] [exthost] [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+[2022-02-25 23:34:06.072] [exthost] [info] Eager extensions activated
+[2022-02-25 23:34:06.494] [exthost] [info] ExtensionService#_doActivateExtension vscode.github-authentication, startup: false, activationEvent: 'onAuthenticationRequest:github'
+[2022-02-25 23:34:06.835] [exthost] [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onStartupFinished'
+[2022-02-25 23:34:07.001] [exthost] [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+[2022-02-25 23:34:26.703] [exthost] [info] ExtensionService#_doActivateExtension vscode.php-language-features, startup: false, activationEvent: 'onLanguage:php'
+[2022-02-25 23:58:27.193] [exthost] [info] extension host terminating: renderer closed the socket
+[2022-02-25 23:58:27.385] [exthost] [info] Extension host with pid 17997 exiting with code 0
