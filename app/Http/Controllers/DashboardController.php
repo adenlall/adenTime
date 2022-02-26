@@ -22,23 +22,9 @@ class DashboardController extends Controller
     {
 
 
-        // $footballdataKEY = '32c10ff811b644ce85cab7ba0189b94a';      //  00e6d72f72024a5a90b3c1fdfa3b0ba8 2th API token
-        // $opo = 'http://api.football-data.org/v3/competitions/PL/';
-        // $req = Http::withHeaders([
-        //     'X-Auth-Token' => "{$footballdataKEY}"
-        // ])->get($opo)->json();
-        // $ol = 'http://api.football-data.org/v3/competitions/2021/matches?matchday=27&status=SCHEDULED';
-        // $op = Http::withHeaders([
-        //     'X-Auth-Token' => "{$footballdataKEY}"
-        // ])->get($ol)->json();
-        // dd($req, $op);
-
-
         // config
-        // $ip = $request->ip();
-
-
-        $ip = "1.1.72.208";
+        // $ip = "1.1.72.208";
+        $ip = $request->ip();
         $position = Location::get($ip);
         $timeOut = now()->addMicroseconds(10);
         $openweatherKEY = '640dd62032cdb0fa31d41c05f34c215a';
@@ -128,16 +114,17 @@ class DashboardController extends Controller
         $resan = cache()->remember('resan', $timeOut, function () use ($urlan) {
             return Http::get($urlan)->json();
         });
-        // $competition = 2015;
-        $urlfo_c = "http://api.football-data.org/v3/competitions/{$competition}";
-        $urlfo_m = "http://api.football-data.org/v3/competitions/{$competition}/matches?status=SCHEDULED&matchday=27";
-        $urlfo_t = "http://api.football-data.org/v3/competitions/{$competition}/teams?season=2021";
 
+
+        $urlfo_c = "http://api.football-data.org/v3/competitions/{$competition}";
+        // $urlfo_m = "http://api.football-data.org/v3/competitions/{$competition}/matches?status=SCHEDULED&matchday=27";
         $resfo_c = cache()->remember('resoos', $timeOut, function () use ($footballdataKEY, $urlfo_c) {
             return Http::withHeaders([
                 'X-Auth-Token' => "{$footballdataKEY}"
             ])->get($urlfo_c)->json();
         });
+        $urlfo_m = "http://api.football-data.org/v3/competitions/{$competition}/matches?matchday={$resfo_c['currentSeason']['currentMatchday']}";
+        $urlfo_t = "http://api.football-data.org/v3/competitions/{$competition}/teams?season=2021";
         $resfo_m = cache()->remember('resoos', $timeOut, function () use ($footballdataKEY, $urlfo_m) {
             return Http::withHeaders([
                 'X-Auth-Token' => "{$footballdataKEY}"
@@ -148,10 +135,8 @@ class DashboardController extends Controller
                 'X-Auth-Token' => "{$footballdataKEY}"
             ])->get($urlfo_t)->json();
         });
-        // dd($resfo_c, $resfo_m, $resfo_t);
 
-
-        // config responses
+        // config Holidays
         foreach ($resho as $key => $row) {
             $count[$key] = $row['date'];
         }
@@ -177,7 +162,7 @@ class DashboardController extends Controller
 
 
 
-        // dd($resfo_c, $resfo_m, $resfo_t, $urlfo_c, $urlfo_m, $urlfo_t);
+
         // return
         return view('dashboard')->with([
             'ip' => $ip,
@@ -187,7 +172,7 @@ class DashboardController extends Controller
             'holidays' => $resho[$key + 1],
             'animes' => $resan['data'],
             'compitition' => $resfo_c,
-            'matches' => $resfo_m,
+            'matches' => $resfo_m['matches'],
             'teams' => $resfo_t['teams'],
             'recType' => $rec_type,
         ]);

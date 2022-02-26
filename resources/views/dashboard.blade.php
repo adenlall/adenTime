@@ -1,6 +1,6 @@
 @extends('master.dash')
 @section('title')
-    Dashboard
+Dashboard
 @endsection
 @section('style')
 
@@ -11,56 +11,48 @@
 
 ?>
 
-             {{--||||-- CONTENT -----||||||||||||||||||||||||||||||---------}}
-            <div class="overflow-x-scroll h-screen pb-24 px-4 md:px-6  bg-gray-200 dark:bg-gray-800">
-                <h1 class="text-4xl font-semibold text-gray-800 dark:text-white">
-                    <?php
+{{--||||-- CONTENT -----||||||||||||||||||||||||||||||---------}}
+<div class="overflow-x-scroll h-screen pb-24 px-4 md:px-6  bg-gray-200 dark:bg-gray-800">
+    <h1 class="text-4xl font-semibold text-gray-800 dark:text-white">
+        <?php
                     $timezone = auth()->user()->timezone;
                     ?>
 
-                    @if (Carbon\Carbon::now($timezone)->hour < 12 AND Carbon\Carbon::now($timezone)->hour > 05 )
-                        Good morning,
-                    @elseif(Carbon\Carbon::now($timezone)->hour < 17)
-                        Good afternoon,
-                    @elseif(Carbon\Carbon::now($timezone)->hour < 20)
-                        Good evening,
-                    @else
-                        Good Night,
-                    @endif
-                            {{ auth()->user()->fname }}
-                </h1>
-                <h2 class="text-md text-gray-400">
-                    Here&#x27;s what&#x27;s happening with your ambassador account today,{{ auth()->user()->lname }}.
-                </h2>
-                {{--||||-- HOUR -----||||||||||||||||||||||||||||||---------}}
+        @if (Carbon\Carbon::now($timezone)->hour < 12 AND Carbon\Carbon::now($timezone)->hour > 05 )
+            Good morning,
+            @elseif(Carbon\Carbon::now($timezone)->hour < 17) Good afternoon, @elseif(Carbon\Carbon::now($timezone)->hour < 20) Good evening, @else Good Night, @endif {{ auth()->user()->fname }} </h1>
+                    <h2 class="text-md text-gray-400">
+                        Here&#x27;s what&#x27;s happening with your ambassador account today,{{ auth()->user()->lname }}.
+                    </h2>
+                    {{--||||-- HOUR -----||||||||||||||||||||||||||||||---------}}
                     <div class="flex my-6 items-center w-full space-y-4 md:space-x-4 md:space-y-0 flex-col md:flex-row">
                         <div class="w-full md:w-6/12">
                             <div class="shadow-lg w-full bg-white dark:bg-gray-700 relative overflow-hidden">
-                                    <div class="flex items-center justify-between px-4 py-6 space-x-4">
-                                        <div class="flex items-center">
-                                            <span class="rounded-full relative p-5 bg-purple-500">
-                                                <x-heroicon-o-at-symbol class="text-white h-5 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"/>
-                                            </span>
-                                            <p class="text-sm text-gray-700 dark:text-white ml-2 font-semibold">
-                                                {{ auth()->user()->email }}
-                                            </p>
-                                        </div>
-                                        <div class="mt-6 md:mt-0 text-black dark:text-white font-bold text-xl">
-                                            <?php
+                                <div class="flex items-center justify-between px-4 py-6 space-x-4">
+                                    <div class="flex items-center">
+                                        <span class="rounded-full relative p-5 bg-purple-500">
+                                            <x-heroicon-o-at-symbol class="text-white h-5 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
+                                        </span>
+                                        <p class="text-sm text-gray-700 dark:text-white ml-2 font-semibold">
+                                            {{ auth()->user()->email }}
+                                        </p>
+                                    </div>
+                                    <div class="mt-6 md:mt-0 text-black dark:text-white font-bold text-xl">
+                                        <?php
                                                 $c_h = Carbon\Carbon::now(auth()->user()->timezone)->format('H');
                                                 $r_h = 24 - $c_h;
                                                 $pour = $c_h*100/24
                                             ?>
-                                            {{ $r_h }}
-                                            <span class="text-xs text-gray-400">
-                                                hour before the day's done.
-                                            </span>
-                                        </div>
+                                        {{ $r_h }}
+                                        <span class="text-xs text-gray-400">
+                                            hour before the day's done.
+                                        </span>
                                     </div>
-                                    <div class="w-full h-3" style="background: #00000042">
-                                        <div class="w-2/5 h-full text-center text-xs text-white bg-purple-500" style="width: {{ $pour }}%">
-                                        </div>
+                                </div>
+                                <div class="w-full h-3" style="background: #00000042">
+                                    <div class="w-2/5 h-full text-center text-xs text-white bg-purple-500" style="width: {{ $pour }}%">
                                     </div>
+                                </div>
                             </div>
                         </div>
                         <div class="flex items-center w-full md:w-1/2 space-x-4">
@@ -86,7 +78,7 @@
                             </div>
                         </div>
                     </div>
-                {{--||||-- WEATHER --||||||||||||||||||||||||||||||---------}}
+                    {{--||||-- WEATHER --||||||||||||||||||||||||||||||---------}}
                     <div class="flex my-6 flex-col items-stretch w-full space-y-4 md:space-x-4 text-black dark:text-white md:space-y-0 md:flex-row">
                         <div class="w-full md:w-1/2 shadow-lg relative overflow-hidden bg-cover bg-center" style="background: url({{ $photo['results'][0]['cover_photo']['urls']['regular'] }}); background-size: cover;">
                             <div class="flex justify-between w-full h-full px-4 pb-9 pt-28 space-x-4" style="background: linear-gradient(337deg, #1f293882, #ffffff00);">
@@ -115,7 +107,7 @@
                             </div>
                         </div>
                         <div class="w-full md:w-1/2 shadow-lg relative overflow-hidden bg-cover bg-center">
-                            <div class="flex justify-between px-4 py-9 w-full h-full space-x-4 bg-white dark:bg-gray-700 " >
+                            <div class="flex justify-between px-4 py-9 w-full h-full space-x-4 bg-white dark:bg-gray-700 ">
                                 <div class="flex flex-col text-black dark:text-white justify-start ">
                                     <p class="text-xl ml-2 text-black dark:text-white border-gray-200 opacity-70">
                                         Next holiday:
@@ -133,7 +125,7 @@
                             </div>
                         </div>
                     </div>
-                {{--||||-- UFEA -----||||||||||||||||||||||||||||||---------}}
+                    {{--||||-- UFEA -----||||||||||||||||||||||||||||||---------}}
                     <div class=" font-bold text-black text-2xl dark:text-white">
                         {{ $compitition['area']['name'] }} Compitition
                         <span class="p-1 ml-4 rounded-lg w-4 h-2 bg-yellow-400 text-black text-xs">
@@ -143,39 +135,62 @@
                     <div class="flex my-6 flex-col items-stretch w-full space-y-4 md:space-x-4 text-black dark:text-white md:space-y-0 md:flex-row">
                         <div class="w-full md:w-1/2 shadow-lg relative overflow-hidden bg-cover bg-center bg-white dark:bg-gray-700">
                             <div class="px-4 py-6">
-                                <p class="font-xl pl-4 font-bold  ">{{ $compitition['name'] }} Matches</p>
-                                <div class="flex flex-col overflow-x-scroll px-4 py-2 h-96">
-                                    @foreach ($matches['matches'] as $matche)
-                                    <?php
-                                        $home_config = array_search($matche['homeTeam']['name'], array_column($teams, 'name'));
+                                <p class="font-xl pl-4 font-bold  ">{{ $compitition['name'] }} Week Timed match
+                                </p>
+                                <div class="h-96 overflow-x-scroll">
+                                    <div class="px-4 py-2 flex flex-col">
+                                        @foreach ($matches as $match)
+                                        <?php
+                                        $home_config = array_search($match['homeTeam']['name'], array_column($teams, 'name'));
                                         $home = $teams[$home_config];
-                                        $away_config = array_search($matche['awayTeam']['name'], array_column($teams, 'name'));
+                                        $away_config = array_search($match['awayTeam']['name'], array_column($teams, 'name'));
                                         $away = $teams[$away_config];
-                                    ?>
-                                        <div class="flex flex-col py-4 items-center rounded-xl my-4" style="background:linear-gradient(324deg, #27265859, #7527b01f);">
+                                        ?>
+                                        {{-- #f3d57c91, #1de8f76e live --}}
+                                        {{-- #48479659, #e54fda1f timed --}}
+                                        {{-- #dd101059, #800f0f9c paused --}}
+                                        <div class="flex flex-col py-4 items-center rounded-xl my-4" style="background:linear-gradient(324deg,@if($match['status']==='PAUSED'OR$match['status']==='POSTPONED'){{'#dd101059,#800f0f9c'}}@endif @if($match['status']==='FINISHED'){{'#0000006e,#0401061f'}}@endif @if($match['status']==='IN_PLAY'){{'#f3d57c91,#1de8f76e'}}@endif @if($match['status']==='TIMED'){{'#48479659, #e54fda1f'}}@endif );">
                                             <div class="flex items-center px-2 py-2">
                                                 <div class="flex flex-col items-center w-40">
                                                     {{-- <x-heroicon-o-user-circle width="60" height="60" class="text-black" fill="transparent" /> --}}
-                                                    <img src="{{ $home['crestUrl'] }}" width= 60 height= 60 alt="">
+                                                    <img src="{{ $home['crestUrl'] }}" width=60 height=60 alt="">
                                                     <p class="whitespace-nowrap overflow-hidden text-ellipsis text-center" style="width: 7.4rem;">{{ $home['shortName'] }}</p>
                                                 </div>
                                                 <p class="px-4 font-bold">VS</p>
                                                 <div class="flex flex-col items-center w-40">
                                                     {{-- <x-heroicon-o-user-circle width="60" height="60" class="text-black" fill="transparent" /> --}}
-                                                    <img src="{{ $away['crestUrl'] }}" width= 60 height= 60 alt="">
+                                                    <img src="{{ $away['crestUrl'] }}" width=60 height=60 alt="">
                                                     <p class="whitespace-nowrap overflow-hidden text-ellipsis text-center" style="width: 7.4rem;">{{ $away['shortName'] }}</p>
                                                 </div>
                                             </div>
-                                            <p>{{ $matche['utcDate'] }}</p>
+
+                                            @if($match['status'] === 'TIMED')
+                                            <p>Play IN : {{ $match['utcDate'] }}</p>
+                                            @endif
+                                            @if($match['status'] === 'IN_PLAY')
+                                            <p class="text-red">Live : {{ $match['score']['fullTime']['home'] }} - {{ $match['score']['fullTime']['away'] }}</p>
+                                            @endif
+                                            @if($match['status'] === 'FINISHED')
+                                            <p class="text-red">Finished : {{ $match['score']['fullTime']['home'] }} - {{ $match['score']['fullTime']['away'] }}</p>
+                                            @endif
+                                            @if($match['status'] === 'PAUSED')
+                                            <p>PAUSED : {{ $match['utcDate'] }}</p>
+                                            @endif
+                                            @if($match['status'] === 'POSTPONED')
+                                            <p>POSTPONED : {{ $match['utcDate'] }}</p>
+                                            @endif
+
                                         </div>
-                                    @endforeach
+                                        @endforeach
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="w-full md:w-1/2 shadow-lg relative overflow-hidden bg-cover bg-center " style="background: url('https://www.framestore.com/sites/default/files/styles/slideshow_images_small_800_450/public/blocks/images/uefa_still001.jpg'); background-size: cover;">
+                        <div class="w-full md:w-1/2 shadow-lg relative overflow-hidden bg-cover bg-center bg-white dark:bg-gray-700">
+
                         </div>
                     </div>
-                {{--||||-- ANIME ----||||||||||||||||||||||||||||||---------}}
+                    {{--||||-- ANIME ----||||||||||||||||||||||||||||||---------}}
                     <div class=" font-bold text-black text-2xl dark:text-white">
                         {{ $recType }} recommended by the weather for your city<span class="p-1 ml-4 rounded-lg w-4 h-2 bg-cyan-400 text-black text-xs">alpha</span>
                     </div>
@@ -183,24 +198,25 @@
                         <div class="flex overflow-x-scroll text-black dark:text-white pb-6 hide-scroll-bar" style="padding: 1.5rem">
                             <div class="flex flex-nowrap my-1" style="margin-left: -1rem;">
                                 @foreach ($animes as $anime)
-                                    <div class="shadow-lg flex flex-col w-14 justify-start ml-4 items-center p-4 rounded-lg bg-white dark:bg-gray-700" style="width: 14rem;">
-                                        <img src="{{ $anime['attributes']['posterImage']['medium'] }}" class="rounded-lg" style="width: 14rem;">
-                                            <div class="flex flex-col justify-start ">
-                                                <p class="text-xl ml-2 font-medium overflow-hidden text-ellipsis">
-                                                    {{ $anime['attributes']['titles']['en_jp'] }}
-                                                </p>
-                                            </div>
+                                <div class="shadow-lg flex flex-col w-14 justify-start ml-4 items-center p-4 rounded-lg bg-white dark:bg-gray-700" style="width: 14rem;">
+                                    <img src="{{ $anime['attributes']['posterImage']['medium'] }}" class="rounded-lg" style="width: 14rem;">
+                                    <div class="flex flex-col justify-start ">
+                                        <p class="text-xl ml-2 font-medium overflow-hidden text-ellipsis">
+                                            {{ $anime['attributes']['titles']['en_jp'] }}
+                                        </p>
                                     </div>
+                                </div>
                                 @endforeach
                             </div>
                         </div>
                     </div>
-            </div>
+</div>
 
 @endsection
 @section('script')
 <script>
     setInterval(showTime, 1000);
+
     function showTime() {
         let time = new Date();
         let hour = time.getHours();
@@ -221,12 +237,13 @@
         min = min < 10 ? "0" + min : min;
         sec = sec < 10 ? "0" + sec : sec;
 
-        let currentTime = hour + ":"
-            + min + ":" + sec + am_pm;
+        let currentTime = hour + ":" +
+            min + ":" + sec + am_pm;
 
         document.getElementById("clock")
             .innerHTML = currentTime;
     }
+
     function getImageLightness(imageSrc, callback) {
         var img = document.createElement("img");
         img.src = imageSrc;
@@ -236,7 +253,7 @@
 
         var colorSum = 0;
 
-        img.onload = function () {
+        img.onload = function() {
             // create canvas
             var canvas = document.createElement("canvas");
             canvas.width = this.width;
@@ -264,7 +281,7 @@
 
     };
     var urlimg = "{{ $photo['results'][0]['cover_photo']['urls']['regular'] }}";
-    getImageLightness(urlimg, function (brightness) {
+    getImageLightness(urlimg, function(brightness) {
 
         var ely = document.querySelectorAll('.ttx');
         if (brightness > 150) {
@@ -277,6 +294,7 @@
             }
         }
     });
+
 </script>
 
 @endsection
