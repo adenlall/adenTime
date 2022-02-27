@@ -25,7 +25,7 @@ class DashboardController extends Controller
 
         // config
         if(env('APP_ENV') === 'local'){$ip = "1.1.72.208";}
-        if(env('APP_ENV') === 'production'){$ip = $request->ip();}
+        else{$ip = $request->ip();}
         $position = Location::get($ip);
         $timeOut = now()->addMicroseconds(10);
         $openweatherKEY = '640dd62032cdb0fa31d41c05f34c215a';
