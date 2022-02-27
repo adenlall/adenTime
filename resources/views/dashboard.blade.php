@@ -196,18 +196,27 @@ Dashboard
                     </div>
                     <div class="flex flex-col my-4">
                         <div class="flex overflow-x-scroll text-black dark:text-white pb-6 hide-scroll-bar" style="padding: 1.5rem">
-                            <div class="flex flex-nowrap my-1" style="margin-left: -1rem;">
-                                @foreach ($animes as $anime)
-                                <div class="shadow-lg flex flex-col w-14 justify-start ml-4 items-center p-4 rounded-lg bg-white dark:bg-gray-700" style="width: 14rem;">
-                                    <img src="{{ $anime['attributes']['posterImage']['medium'] }}" class="rounded-lg" style="width: 14rem;">
-                                    <div class="flex flex-col justify-start ">
-                                        <p class="text-xl ml-2 font-medium overflow-hidden text-ellipsis">
-                                            {{ $anime['attributes']['titles']['en_jp'] }}
-                                        </p>
-                                    </div>
+                            @foreach ($animes as $anime)
+                            <div class="shadow-lg flex flex-col w-48 justify-start ml-4 items-center p-0 pl-10 rounded-lg bg-white dark:bg-gray-700" style="width: 14rem; background: url('{{ $anime['attributes']['posterImage']['medium'] }}'); background-size:cover; background-position: center;">
+                                <div class="flex flex-col shadow-lg w-48 justify-end h-80" style="background: linear-gradient(45deg, black, transparent);">
+                                    <p class="text-xl ml-2 pb-2 pl-2 font-bold overflow-hidden text-ellipsis">
+                                        {{ $anime['attributes']['titles']['en_jp'] }}
+                                        <?php
+                                            $rating = $anime['attributes']['averageRating'];
+                                            if ($rating < 30) {
+                                                $color = 'text-red-400';
+                                            }if ($rating > 30 AND $rating < 50) {
+                                                $color = 'text-orange-700';
+                                            }if ($rating > 50 AND $rating < 70) {
+                                                $color = 'text-yellew-700';
+                                            }if ($rating > 70) {
+                                                $color = 'text-green-400';
+                                            }
+                                        ?>
+                                    </p><span>Average rating : <span class="{{$color}}">{{ $rating }}</span></span>
                                 </div>
-                                @endforeach
                             </div>
+                            @endforeach
                         </div>
                     </div>
 </div>
