@@ -13,9 +13,6 @@
     <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
     <meta property="og:image" content="https://ripeemangoes.files.wordpress.com/2017/12/original.jpg" />
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6170063612762128"
-     crossorigin="anonymous"></script>
     <!-- Matomo -->
     <script>
         var _paq = window._paq = window._paq || [];
@@ -36,7 +33,11 @@
     </script>
     <!-- End Matomo Code -->
 
+
+    <!-- Google AdSense -->
     @yield('style')
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6170063612762128"
+     crossorigin="anonymous"></script>
 </head>
 
 <body>
