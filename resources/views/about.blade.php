@@ -41,7 +41,7 @@
                 <div class="flex flex-row space-x-2">
                     <a target="_blank" href="https://twitter.com/adenlall"><button class="btn btn-accent"><x-bxl-twitter width="30" /> twitter</button></a>
                     <a target="_blank" href="https://github.com/adenlall"><button class="btn btn-accent"><x-bxl-github width="30" /> Github</button></a>
-                    <a target="_blank" href="https://linkedin.com/adenlall"><button class="btn btn-accent"><x-bxl-linkedin width="30" /> LinkedIn</button></a>
+                    <a target="_blank" href="https://www.linkedin.com/in/bilal-janah-a96006226/"><button class="btn btn-accent"><x-bxl-linkedin width="30" /> LinkedIn</button></a>
                     <a target="_blank" href="https://instagam.com/aden_lall"><button class="btn btn-accent"><x-bxl-instagram width="30" /> Instagram</button></a>
                     <a target="_blank" href="https://t.me/adenlall"><button class="btn btn-accent"><x-bxl-telegram width="30" /> Telegram</button></a>
                 </div>
