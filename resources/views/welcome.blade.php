@@ -88,20 +88,6 @@
     </div>
 </div>
 {{-------- FIVE --------}}
-<div class="rectangle1">
-    <script type="text/javascript"><!--
-        google_ad_client = "ca-pub-6170063612762128";
-        /* Rectangle-1 */
-        google_ad_slot = "3754049196";
-        google_ad_width = 336;
-        google_ad_height = 280;
-        //-->
-    </script>
-    <script type="text/javascript"
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6170063612762128">
-    </script>
-</div>
-{{-------- FIVE --------}}
 
 <div class="flex lg:flex-row flex-col justify-center content-center items-center space-y-4 lg:space-y-0 lg:items-end space-x-0 lg:space-x-4 mb-16 mx-12">
     <p class="font-extrabold text-4xl">Get started now, and Build a new vision of you</p>

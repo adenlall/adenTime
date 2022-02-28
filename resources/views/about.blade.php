@@ -15,7 +15,7 @@
         <div class="w-full h-full flex items-center "
             style="background: url('https://ripeemangoes.files.wordpress.com/2017/12/original.jpg?w=660');background-size: cover; background-position:bottom;">
             <div class="container flex items-center justify-center w-full h-1/2 m-auto text-4xl font-extrabold text-center">
-                <header>Von Herzen - möge es wieder zu Herzen gehen <span>🎵</span></header>
+                <header style="color:white;">Von Herzen - möge es wieder zu Herzen gehen <span>🎵</span></header>
             </div>
         </div>
         <div class="w-full p-2 text-center">
