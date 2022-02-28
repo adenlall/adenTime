@@ -142,20 +142,19 @@
             </div>
         </div>
         {{-- GOOGLE ADS --}}
-        <div
-            class="flex my-6 flex-col items-stretch w-full space-y-4 md:space-x-4 text-black dark:text-white md:space-y-0 md:flex-row">
-            <div class="w-full md:w-1/2 shadow-lg relative overflow-hidden bg-cover bg-center bg-white dark:bg-gray-700">
 
-                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6170063612762128"
-                                crossorigin="anonymous"></script>
-                <!-- dashboard ads -->
-                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6170063612762128"
-                    data-ad-slot="3754049196" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-            </div>
-        </div>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6170063612762128"
+                            crossorigin="anonymous"></script>
+            <!-- dashboard ads -->
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6170063612762128" data-page-url="https://adenlall.herokuapp.com/"
+                data-ad-slot="3754049196" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({
+                    google_ad_client: "ca-pub-6170063612762128",
+                    enable_page_level_ads: true
+                });
+            </script>
+
         {{-- ||||-- UFEA -----||||||||||||||||||||||||||||||------- --}}
         <div class=" font-bold text-black text-2xl dark:text-white">
             {{ $compitition['area']['name'] }} Compitition
