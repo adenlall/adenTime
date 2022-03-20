@@ -1,12 +1,9 @@
-import Footer from "../footer/footer";
-import Navbar from "../navbar/Navbar";
 
 function About() {
     return ( 
 
         <>
             <div className='p-0 m-0 bg-white dark:bg-gray-900'>
-                <Navbar />
                 <div className="lg:w-full mt-12 w-full shadow-xl flex md:flex-row flex-col items-center  justify-center  p-4 rounded-lg bg-white dark:bg-gray-900 dark:text-slate-100 text-gray-800">
 
                     <div class="p-4 flex flex-col items-center">
@@ -253,10 +250,6 @@ function About() {
                         </div>
                     </div>
                 </div>
-
-                    <div className='w-full flex lg:flex-row flex-col items-stretch justify-center content-center space-y-4 space-x-0 lg:space-y-0 lg:space-x-4 p-4'>
-                        <Footer />
-                    </div>
 
             </div>
         </>

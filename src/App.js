@@ -1,18 +1,14 @@
-import './App.css';
-import { BrowserRouter as Router } from 'react-router-dom'
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 
-import Navbar from './components/navbar/Navbar';
 import NextSalat from './components/Section1/NextSalat';
 import SlideDiv from './components/Section1/SideDiv';
 import Sec2 from './components/qoran/sec2';
 import Calendar from './components/calendar/Calendar';
-import Footer from './components/footer/footer';
 import MPro from './components/tips/month';
 import Support from './components/secLast/support';
-// import Holiday from './components/calendar/holiday';
-// import Ahkam from './components/tips/ahkam';
+
+
 
 function App() {
   const [query, setQuery] = useState(0);
@@ -39,14 +35,10 @@ function App() {
     }, [tat])
     
 
-
-
   if (tat === true && query !== 0) {
 
     return (
-
-        <div className='p-0 m-0 bg-white dark:bg-gray-900'>
-          <Navbar />
+<>
           <div className='w-full flex lg:flex-row flex-col items-stretch justify-center content-center space-y-4 space-x-0 lg:space-y-0 lg:space-x-4 p-4'>
             <NextSalat cc={cc} query={query} />
             <SlideDiv />
@@ -66,10 +58,8 @@ function App() {
           <div className='w-full flex lg:flex-row mt-20 flex-col items-stretch justify-center content-center space-y-4 space-x-0 lg:space-y-0 lg:space-x-4 p-4'>
             <Support />
           </div>
-          <div className='w-full flex lg:flex-row flex-col items-stretch justify-center content-center space-y-4 space-x-0 lg:space-y-0 lg:space-x-4 p-4'>
-            <Footer />
-          </div>
-        </div>
+          
+          </>
     );
   }
 

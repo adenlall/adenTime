@@ -5,17 +5,26 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import ChangeLog from './components/changelog/ChangeLog';
+import Navbar from './components/navbar/Navbar';
+import Footer from './components/footer/footer';
 import About from './components/about/about';
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
+
+    <div className='p-0 m-0 bg-white dark:bg-gray-900'>
+          <Navbar />
       <Routes>
         <Route path='*' element={<App />} />
         <Route path='/ChangeLog' element={<ChangeLog />} />
         <Route path='/About' element={<About />} />
 
       </Routes>
+      <div className='w-full flex lg:flex-row flex-col items-stretch justify-center content-center space-y-4 space-x-0 lg:space-y-0 lg:space-x-4 p-4'>
+            <Footer />
+          </div>
+      </div>
 
     </Router>
 

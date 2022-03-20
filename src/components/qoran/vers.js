@@ -3,11 +3,11 @@ import axios from 'axios';
 
 
 function Vers(props) {
-    // const [wait, setWait] = useState(true);
-    const [ayah, setAyah] = useState(0);
-    // const [surah, setSurah] = useState(0);
-    // const [snum, setSmum] = useState(0);
+    
 
+    const [ayah, setAyah] = useState(0);
+
+    
     const getQrn = () => {
         axios.get(`https://api.quran.com/api/v4/quran/verses/imlaei?verse_key=${props.num}`)
             .then((response) => {
@@ -50,7 +50,7 @@ function Vers(props) {
     
     useEffect(() => {
         getQrn()
-    }, [])
+    }, [getQrn])
 
     return (
         <div className="lg:w-1/2 w-full shadow-xl flex justify-between items-center p-4 rounded-lg bg-slate-100 dark:bg-gray-800 dark:text-slate-100 text-gray-800">
