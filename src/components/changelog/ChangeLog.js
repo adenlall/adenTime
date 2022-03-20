@@ -7,7 +7,7 @@ function ChangeLog() {
                     <div className="flex flex-col h-full w-full items-center content-center rounded-lg p-4 justify-center" style={{ background: 'linear-gradient(228deg, #000000ba, transparent)' }}>
                         <div className="flex flex-col items-start space-y-4">
                             <header className="text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">Track full progress on GitHub</header>
-                            <a rel="nofollow" href="https:www.github.com/adenlall/salatok"><button className="btn">GitHub</button></a>
+                            <a rel="nofollow" href="https://www.github.com/adenlall/salatok"><button className="btn">GitHub</button></a>
                         </div>
                     </div>
                 </div>
